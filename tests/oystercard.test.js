@@ -15,4 +15,10 @@ describe("Oystercard", () => {
     oystercard.topUp(5);
     expect(oystercard.balance).toEqual(5);
   });
+
+  it("has a maximum balance of £90.", () => {
+    expect(() => {
+      oystercard.topUp(91);
+    }).toThrowError("Maximum balance of £90 reached");
+  });
 });
