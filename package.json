@@ -1,0 +1,26 @@
+{
+  "name": "oystercard-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Thatguy560/Oystercard-JS.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Thatguy560/Oystercard-JS/issues"
+  },
+  "homepage": "https://github.com/Thatguy560/Oystercard-JS#readme",
+  "devDependencies": {
+    "jest": "^26.4.2"
+  }
+}
