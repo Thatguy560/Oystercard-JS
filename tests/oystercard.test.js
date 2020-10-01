@@ -21,4 +21,16 @@ describe("Oystercard", () => {
       oystercard.topUp(91);
     }).toThrowError("Maximum balance of £90 reached");
   });
+
+  describe("For making journeys with your Oystercard", () => {
+    beforeEach(() => {
+      oystercard.topUp(90);
+    });
+  });
+
+  it("will allow you to check the Oystercard balance at any time.", () => {
+    expect(oystercard.checkBalance()).toBe(
+      `Your current Oystercard balance is £${oystercard.balance}.00`
+    );
+  });
 });

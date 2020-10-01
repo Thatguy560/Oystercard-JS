@@ -12,7 +12,7 @@ class Oystercard {
   }
 
   checkBalance() {
-    return `Your current Oystercard balance is £${"%.2f" % this.balance}`;
+    return `Your current Oystercard balance is £${this.balance.toFixed(2)}`;
   }
 
   topUp(amount) {
@@ -23,8 +23,16 @@ class Oystercard {
     return this.balance;
   }
 
+  deduct(amount) {
+    this.balance -= amount;
+  }
+
   maxBalanceReached(amount) {
     return this.balance + amount >= maximumBalance;
+  }
+
+  insufficientFunds() {
+    this.balance < minimumBalance;
   }
 }
 
