@@ -1,7 +1,7 @@
 "use strict";
 
 const Oystercard = require("../src/oystercard");
-const Journey = require("../src/journey.js");
+const Journey = require("../src/journey");
 const Station = require("../src/station.js");
 
 describe("Oystercard", () => {
@@ -19,14 +19,15 @@ describe("Oystercard", () => {
   });
 
   it("has a maximum balance of £90.", () => {
+    oystercard.topUp(1);
     expect(() => {
-      oystercard.topUp(91);
+      oystercard.topUp(oystercard.maximumBalance);
     }).toThrowError("Maximum balance of £90 reached");
   });
 
   describe("For making journeys with your Oystercard", () => {
     beforeEach(() => {
-      oystercard.topUp(90);
+      oystercard.topUp(oystercard.maximumBalance);
     });
   });
 
