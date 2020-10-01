@@ -23,6 +23,12 @@ class Oystercard {
     return this.balance;
   }
 
+  touchIn() {}
+
+  touchOut() {}
+
+  journeyHistory() {}
+
   deduct(amount) {
     this.balance -= amount;
   }

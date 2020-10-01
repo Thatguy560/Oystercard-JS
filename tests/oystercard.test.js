@@ -1,6 +1,8 @@
 "use strict";
 
 const Oystercard = require("../src/oystercard");
+const Journey = require("../src/journey.js");
+const Station = require("../src/station.js");
 
 describe("Oystercard", () => {
   let oystercard;
