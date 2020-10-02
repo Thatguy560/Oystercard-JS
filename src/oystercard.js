@@ -1,4 +1,5 @@
 "use strict";
+// import Journey from "./journey";
 
 const defaultBalance = 0;
 
@@ -16,33 +17,45 @@ class Oystercard {
   }
 
   topUp(amount) {
-    if (this.maxBalanceReached(amount)) {
+    if (this.balance + amount > this.maximumBalance) {
       throw new Error(`Maximum balance of £${this.maximumBalance} reached`);
     }
     this.balance += amount;
     return this.balance;
   }
 
-  touchIn() {}
+  touchIn(entryStation, zone) {
+    if (this.balance < this.minimumBalance) {
+      throw new Error(`Minimum balance of £${this.minimumBalance} needed.`);
+    }
+    this.currentTrip !== null
+      ? this.addJourney() && this.calculateFare()
+      : this.newJourney();
+    this.currentTrip.startedJourney(entrystation);
+  }
 
-  touchOut() {}
+  touchOut(exitStation, zone) {}
 
-  journeyHistory() {}
+  journeyHistory() {
+    if (this.journeys.length == 0) {
+      return "No journeys have been made yet";
+    } else {
+      this.journeys.forEach(() => (item) => {
+        return item;
+      });
+    }
+  }
 
   deduct(amount) {
     this.balance -= amount;
   }
 
-  maxBalanceReached(amount) {
-    return this.balance + amount > this.maximumBalance;
-  }
-
-  insufficientFunds() {
-    this.balance < this.minimumBalance;
-  }
-
   addJourney() {
     this.journeys.push(this.currentTrip);
+  }
+
+  calculateFare() {
+    this.deduct(this.currentTrip.calculateFare());
   }
 
   newJourney() {

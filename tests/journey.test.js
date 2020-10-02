@@ -2,14 +2,13 @@
 
 const Journey = require("../src/journey");
 
+let journey;
+
+beforeEach(() => {
+  journey = new Journey();
+});
+
 describe("Journey", () => {
-  let journey;
-  let station;
-
-  beforeEach(() => {
-    journey = new Journey();
-  });
-
   it("Shows you before a journey is started the entry and exit station don't exist.", () => {
     expect(journey.entryStation).toEqual(null);
     expect(journey.exitStation).toEqual(null);
