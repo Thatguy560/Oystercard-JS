@@ -1,10 +1,13 @@
 "use strict";
+
+const penaltyFare = 6;
+const normalFare = 3;
 class Journey {
   constructor() {
     this.entryStation = null;
     this.exitStation = null;
-    this.penaltyFare = 6;
-    this.normalFare = 3;
+    // this.penaltyFare = 6;
+    // this.normalFare = 3;
     this.fare;
   }
 
@@ -22,8 +25,8 @@ class Journey {
 
   calculateFare() {
     this.entryStation === null || this.exitStation === null
-      ? (this.fare = this.penaltyFare)
-      : (this.fare = this.normalFare);
+      ? (this.fare = penaltyFare)
+      : (this.fare = normalFare);
   }
 }
 

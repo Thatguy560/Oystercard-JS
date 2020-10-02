@@ -45,4 +45,32 @@ describe("Oystercard", () => {
     expect(oystercard.currentTrip.entryStation).toEqual("Enfield Town");
     // expect(oystercard.currentTrip.zone).toEqual(5);
   });
+
+  it("will save a journey if you touch in and out at the station", () => {
+    oystercard.topUp(oystercard.maximumBalance);
+    oystercard.touchIn("Enfield Town", 5);
+    oystercard.touchOut("Liverpool Street", 1);
+    expect(oystercard.journeyHistory).toEqual([
+      {
+        entryStation: "Enfield Town",
+        exitStation: "Liverpool Street",
+        fare: 3,
+      },
+    ]);
+  });
+
+  it("Will save a journey if you forget to touch in at the station", () => {
+    oystercard.topUp(10);
+    oystercard.touchOut("Liverpool Street", 1);
+    expect(oystercard.journeyHistory).toEqual([
+      { entryStation: null, exitStation: "Liverpool Street", fare: 6 },
+    ]);
+  });
+
+  it("will deduct the balance from your Oystercard", () => {
+    oystercard.topUp(10);
+    oystercard.touchIn("Enfield Town", 5);
+    oystercard.touchOut("Liverpool Street", 1);
+    expect(oystercard.balance).toEqual(7);
+  });
 });

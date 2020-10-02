@@ -1,13 +1,13 @@
 "use strict";
 
-const Journey = require("./journey");
+const Journey = require("./journey"); // require is causing the issue
 const defaultBalance = 0;
 
 class Oystercard {
   constructor(balance = defaultBalance) {
     this.balance = balance;
     this.currentTrip = null;
-    this.journeys = [];
+    this.journeyHistory = [];
     this.minimumBalance = 1;
     this.maximumBalance = 90;
   }
@@ -34,16 +34,14 @@ class Oystercard {
     this.currentTrip.startedJourney(entryStation);
   }
 
-  touchOut(exitStation, zone) {}
-
-  journeyHistory() {
-    if (this.journeys.length == 0) {
-      return "No journeys have been made yet";
-    } else {
-      this.journeys.forEach(() => (item) => {
-        return item;
-      });
+  touchOut(exitStation, zone) {
+    if (this.currentTrip === null) {
+      this.newJourney();
     }
+    this.currentTrip.finishedJourney(exitStation);
+    this.calculateFare();
+    this.addJourney();
+    this.currentTrip = null;
   }
 
   deduct(amount) {
@@ -51,7 +49,7 @@ class Oystercard {
   }
 
   addJourney() {
-    this.journeys.push(this.currentTrip);
+    this.journeyHistory.push(this.currentTrip);
   }
 
   calculateFare() {
