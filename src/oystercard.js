@@ -1,6 +1,6 @@
 "use strict";
-// import Journey from "./journey";
 
+const Journey = require("./journey");
 const defaultBalance = 0;
 
 class Oystercard {
@@ -31,7 +31,7 @@ class Oystercard {
     this.currentTrip !== null
       ? this.addJourney() && this.calculateFare()
       : this.newJourney();
-    this.currentTrip.startedJourney(entrystation);
+    this.currentTrip.startedJourney(entryStation);
   }
 
   touchOut(exitStation, zone) {}

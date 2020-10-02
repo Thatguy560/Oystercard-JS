@@ -1,5 +1,4 @@
 "use strict";
-
 class Journey {
   constructor() {
     this.entryStation = null;
@@ -9,8 +8,8 @@ class Journey {
     this.fare;
   }
 
-  startedJourney(entrystation) {
-    this.entryStation = entrystation;
+  startedJourney(entryStation) {
+    this.entryStation = entryStation;
   }
 
   finishedJourney(exitStation) {
