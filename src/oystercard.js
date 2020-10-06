@@ -1,12 +1,14 @@
 "use strict";
 
-const Journey = require("./journey"); // require is causing the issue
+const Journey = require("./journey");
 const defaultBalance = 0;
 
 class Oystercard {
   constructor(balance = defaultBalance) {
     this.balance = balance;
-    this.currentTrip = null;
+    // this.currentTrip = null;
+    // this.inJourney = null
+    this.currentTrip = new Journey();
     this.journeyHistory = [];
     this.minimumBalance = 1;
     this.maximumBalance = 90;
@@ -24,28 +26,28 @@ class Oystercard {
     return this.balance;
   }
 
-  touchIn(entryStation, zone) {
+  deduct(amount) {
+    this.balance -= amount;
+  }
+
+  touchIn(name, zone) {
     if (this.balance < this.minimumBalance) {
       throw new Error(`Minimum balance of £${this.minimumBalance} needed.`);
     }
     this.currentTrip !== null
-      ? this.addJourney() && this.calculateFare()
-      : this.newJourney();
-    this.currentTrip.startedJourney(entryStation);
+      ? this.currentTrip && this.calculateFare()
+      : this.currentTrip;
+    this.currentTrip.startedJourney(name, zone);
   }
 
-  touchOut(exitStation, zone) {
+  touchOut(name, zone) {
     if (this.currentTrip === null) {
-      this.newJourney();
+      this.currentTrip;
     }
-    this.currentTrip.finishedJourney(exitStation);
+    this.currentTrip.finishedJourney(name, zone);
     this.calculateFare();
     this.addJourney();
     this.currentTrip = null;
-  }
-
-  deduct(amount) {
-    this.balance -= amount;
   }
 
   addJourney() {
@@ -55,10 +57,9 @@ class Oystercard {
   calculateFare() {
     this.deduct(this.currentTrip.calculateFare());
   }
-
-  newJourney() {
-    this.currentTrip = new Journey();
-  }
+  // newJourney() {
+  //   this.currentTrip = new Journey();
+  // }
 }
 
 module.exports = Oystercard;

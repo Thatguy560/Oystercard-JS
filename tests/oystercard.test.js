@@ -53,7 +53,9 @@ describe("Oystercard", () => {
     expect(oystercard.journeyHistory).toEqual([
       {
         entryStation: "Enfield Town",
+        entryZone: 5,
         exitStation: "Liverpool Street",
+        exitZone: 1,
         fare: 3,
       },
     ]);
@@ -63,7 +65,12 @@ describe("Oystercard", () => {
     oystercard.topUp(10);
     oystercard.touchOut("Liverpool Street", 1);
     expect(oystercard.journeyHistory).toEqual([
-      { entryStation: null, exitStation: "Liverpool Street", fare: 6 },
+      {
+        entryStation: null,
+        exitStation: "Liverpool Street",
+        exitZone: 1,
+        fare: 6,
+      },
     ]);
   });
 

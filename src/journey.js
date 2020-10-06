@@ -6,22 +6,26 @@ class Journey {
   constructor() {
     this.entryStation = null;
     this.exitStation = null;
+    this.entryZone;
+    this.exitZone;
     // this.penaltyFare = 6;
     // this.normalFare = 3;
     this.fare;
   }
 
-  startedJourney(entryStation) {
-    this.entryStation = entryStation;
+  startedJourney(name, zone) {
+    this.entryStation = name;
+    this.entryZone = zone;
   }
 
-  finishedJourney(exitStation) {
-    this.exitStation = exitStation;
+  finishedJourney(name, zone) {
+    this.exitStation = name;
+    this.exitZone = zone;
   }
 
-  inJourney() {
-    this.entryStation !== null && this.exitStation === null;
-  }
+  // inJourney() {
+  //   this.entryStation !== null && this.exitStation === null;
+  // }
 
   calculateFare() {
     this.entryStation === null || this.exitStation === null
