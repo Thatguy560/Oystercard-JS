@@ -57,9 +57,6 @@ class Oystercard {
   calculateFare() {
     this.deduct(this.currentTrip.calculateFare());
   }
-  // newJourney() {
-  //   this.currentTrip = new Journey();
-  // }
 }
 
 module.exports = Oystercard;

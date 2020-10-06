@@ -23,10 +23,6 @@ class Journey {
     this.exitZone = zone;
   }
 
-  // inJourney() {
-  //   this.entryStation !== null && this.exitStation === null;
-  // }
-
   calculateFare() {
     this.entryStation === null || this.exitStation === null
       ? (this.fare = penaltyFare)
