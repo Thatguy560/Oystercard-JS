@@ -1,6 +1,7 @@
 "use strict";
 
-const Journey = require("../src/journey");
+// const Journey = require("../src/journey");
+import Journey from "../src/journey";
 
 let journey;
 

@@ -1,12 +1,15 @@
 {
   "name": "oystercard-js",
   "version": "1.0.0",
+  "type": "module",
   "description": "",
   "main": "index.js",
   "directories": {
     "test": "tests"
   },
   "scripts": {
+    "build": "babel oystercard.js -d dist",
+    "start": "npm run build && node dist/oystercard.js",
     "test": "jest"
   },
   "repository": {
@@ -21,6 +24,9 @@
   },
   "homepage": "https://github.com/Thatguy560/Oystercard-JS#readme",
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
     "jest": "^26.4.2"
   }
 }

@@ -1,7 +1,9 @@
 "use strict";
 
-const Oystercard = require("../src/oystercard");
-const Journey = require("../src/journey");
+// const Oystercard = require("../src/oystercard");
+// const Journey = require("../src/journey");
+import Oystercard from "../src/oystercard";
+import Journey from "../src/journey";
 
 let oystercard;
 let entryStation;

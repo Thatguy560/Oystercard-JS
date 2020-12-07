@@ -1,6 +1,8 @@
-"use strict";
+// "use strict";
 
-const Journey = require("./journey");
+// const Journey = require("./journey");
+import Journey from "./journey";
+
 const defaultBalance = 0;
 
 class Oystercard {
